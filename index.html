@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mr Repairr</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("gX6EjQHilFXYsqv1b"); // Replace with your actual public key
+      })();
+    </script>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      nav {
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 30px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      .logo img {
+        display: block;
+        width: 219px;
+      }
+      .icons i {
+        color: #fff;
+        margin: 0 10px;
+        font-size: 20px;
+        transition: 0.5s;
+      }
+      .icons i:hover {
+        color: #c6e76c;
+      }
+      .first-band {
+        background-image: url(images/home-bg.webp);
+        height: 85vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding: 50px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .first-band::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .content {
+        color: white;
+        position: relative;
+        z-index: 2;
+      }
+
+      .home-img {
+        width: 100%;
+        max-width: 500px;
+        display: block;
+        margin: auto;
+        position: relative;
+        z-index: 2;
+      }
+      .first-band .row {
+        align-items: center;
+      }
+      .first-p {
+        height: 1px;
+        width: 80px;
+        background-color: #fff;
+        position: absolute;
+        top: 29%;
+      }
+      .first-paragrph {
+        display: flex;
+        position: relative;
+      }
+      .first-band-text {
+        margin-left: 90px;
+      }
+      .button a {
+        text-decoration: none;
+        color: #fff;
+        border: 1px solid #fff;
+        border-radius: 30px;
+        padding: 8px 20px;
+        font-size: 16px;
+        font-weight: 500;
+        transition: 0.5s;
+      }
+      .button a:hover {
+        background-color: #4d6c77;
+        border: 1px solid #4d6c77;
+      }
+      .second-band {
+        background-color: #fff;
+        padding: 50px 30px;
+      }
+      .card {
+        background-color: #202e32;
+        padding: 40px;
+        color: #fff;
+        border-radius: 15px;
+        height: 350px;
+        margin-bottom: 30px;
+      }
+      .card h1 {
+        font-size: 25px;
+        margin-bottom: 15px;
+      }
+      .card p {
+        margin-bottom: 0;
+        color: #bfbfbf;
+        font-weight: 400;
+      }
+      .second-band-img {
+        width: 30%;
+        margin-bottom: 25px;
+      }
+      .header-part {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .header-part h1 {
+        color: #666666;
+      }
+      .third-band-ft {
+        color: #000;
+      }
+      .third-band-ft .first-p {
+        background-color: #8f9699;
+        width: 55px;
+      }
+      .third-band-ft .first-band-text {
+        margin-left: 65px;
+      }
+      .third-band {
+        padding: 50px 30px;
+      }
+      .third-band-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 45px;
+      }
+      .third-band h1 {
+        font-size: 25px;
+        font-weight: 500;
+      }
+      .third-band p {
+        font-size: 17px;
+        font-weight: 400;
+      }
+      .card p {
+        font-size: 17px;
+        font-weight: 400;
+      }
+      .tick-border {
+        border: 1px solid #000;
+        border-radius: 20px;
+        padding: 25px;
+      }
+      .footer-content {
+        text-align: center;
+      }
+      .footer-content h1 {
+        font-size: 18px;
+        margin-bottom: 0;
+        color: #858585;
+      }
+      footer {
+        background-color: #000000;
+        padding: 10px 30px;
+      }
+
+      label {
+        color: #bfbfbf;
+        font-size: 15px;
+        display: block;
+        width: 100%;
+        margin: 8px;
+        text-align: left;
+      }
+      input,
+      textarea {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin: 5px;
+        box-sizing: border-box;
+        border: 1px solid #c6e76c80;
+        border-radius: 30px;
+        font-size: 13px;
+        background-color: #223035;
+        color: #fff;
+      }
+      .third-band 
+      input:focus,
+      textarea:focus {
+        background-color: #223035 !important;
+      }
+      textarea:focus-visible {
+        border: none;
+      }
+      textarea {
+        resize: none;
+        min-height: 100px;
+        max-height: 150px;
+      }
+      button {
+        padding: 10px 20px;
+        background: #223035;
+        border: 1px solid #c6e76c80;
+        color: #fff;
+        font-weight: 500;
+        border-radius: 50px;
+        transition: 0.3s;
+        cursor: pointer;
+        display: block;
+        margin: 20px;
+      }
+      button:hover {
+        background: #4d6c77;
+      }
+      button:disabled {
+        background: #4d6c77;
+        cursor: not-allowed;
+      }
+      .last-band {
+        background-color: #223035;
+        padding: 50px 30px;
+      }
+      .last-band h1 {
+        color: #fff;
+      }
+      .box {
+        background-color: #c6e76c;
+        padding: 40px;
+        border-radius: 30px;
+        margin-bottom: 30px;
+      }
+      .box h1 {
+        color: #000;
+        font-size: 28px;
+        font-weight: 500;
+      }
+      .box i {
+        font-size: 40px;
+        margin-bottom: 25px;
+      }
+      .box p {
+        font-size: 18px;
+        margin-bottom: 0;
+      }
+      .last-band .row {
+        align-items: center;
+      }
+
+      @media (max-width: 767px) {
+        .logo img {
+          width: 140px;
+        }
+      }
+      @media (min-width: 991px) and (max-width: 1200px) {
+        .card {
+          height: 490px;
+        }
+        .tick-border {
+          border-radius: 10px;
+          padding: 10px;
+        }
+      }
+      @media (max-width: 991px) {
+        .tick-border {
+          border-radius: 10px;
+          padding: 14px;
+        }
+        .home-img {
+          display: none;
+        }
+      }
+      @media (max-width: 767px) {
+        .tick-border {
+          padding: 10px 35px !important;
+        }
+      }
+      @media (max-width: 575px){
+        .second-row{
+        display: none;
+      }
+      .third-band-box{
+        margin-bottom: 30px;
+        border: 1px solid #c6e76c;
+        border-radius: 20px;
+        padding: 20px;
+        transition: 0.5s;
+      }
+      .third-band-box:hover {
+    box-shadow: 0 6px 12px #c6e76c;
+}
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="#"><img src="images/logo.png" alt="" /></a>
+      </div>
+      <div class="icons">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </nav>
+    <section class="first-band">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="content">
+              <div class="first-paragrph">
+                <div class="first-p"></div>
+                <p class="first-band-text">Trusted IT Solutions</p>
+              </div>
+              <h1>We spark life back into your devices</h1>
+              <p style="margin-bottom: 35px">
+                Your trusted partner in expert device repair. Where quality
+                meets precision, and your gadgets find a second life!
+              </p>
+              <div class="button">
+                <a href="#contact" onclick="goToLastSection()">To Join Us</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <img src="images/laptop.webp" alt="" class="home-img" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="second-band">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card">
+              <div class="header-part">
+                <img src="images/iphone.svg" alt="" class="second-band-img" />
+                <h1>01</h1>
+              </div>
+              <h1>Phone Repair</h1>
+              <p>
+                Apple, Samsung, Google, Huawei, Xiaomi, OnePlus, Oppo, Vivo,
+                Sony, LG, Motorola, Nokia, Realme, Asus
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card">
+              <div class="header-part">
+                <img src="images/tablet.svg" alt="" class="second-band-img" />
+                <h1>02</h1>
+              </div>
+              <h1>Tablet Repair</h1>
+              <p>
+                Apple, Samsung, Microsoft, Lenovo, Huawei, Asus, Google, Acer,
+                Dell, HP, Sony, Xiaomi, Alcatel, LG
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card">
+              <div class="header-part">
+                <img src="images/macbook.svg" alt="" class="second-band-img" />
+                <h1>03</h1>
+              </div>
+              <h1>Laptop Repair</h1>
+              <p>
+                Apple, Dell, HP, Lenovo, Asus, Acer, Microsoft, MSI, Razer,
+                Samsung, LG, Toshiba, Huawei, Google, Alienware
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card" style="background-color: #c6e76c">
+              <div class="header-part">
+                <img src="images/support.svg" alt="" class="second-band-img" />
+              </div>
+              <h1 style="color: #000">Contact us</h1>
+              <p style="color: #363535">
+                100 S Main St, New York, NY Monday - Saturday 08.00 - 18.00
+                1-800-2345-678
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="third-band">
+      <div class="container">
+        <div class="third-band-header">
+          <div class="first-paragrph third-band-ft">
+            <div class="first-p"></div>
+            <p class="first-band-text">Top Reasons</p>
+          </div>
+          <h1 style="font-size: 40px">Why Choose Us</h1>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="row third-band-box">
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-1  second-row">
+                <div class="tick-border">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    width="32"
+                  >
+                    <path
+                      d="m13.788 25.588c.04.032.064.076.106.106.06.04.128.048.192.076.076.036.15.07.23.092.078.02.154.03.234.036.114.012.224.012.336-.004.046-.008.09-.02.136-.032.138-.034.266-.088.392-.164.022-.014.04-.03.062-.044.082-.056.17-.098.24-.174.05-.054.072-.124.112-.184.002-.002.006-.004.006-.006l11.918-19.102c.424-.646.242-1.514-.406-1.938s-1.514-.242-1.938.406l-11.008 17.642-6.088-5.922c-.568-.526-1.452-.492-1.978.076-.524.568-.49 1.454.078 1.978l7.324 7.126c.014.014.034.018.052.032z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                <h1>Expert Technicians</h1>
+                <p>
+                  Our repair team consists of highly skilled and certified
+                  technicians with extensive experience in diagnosing and fixing
+                  a wide range of devices.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="row third-band-box">
+              <div class="col-lg-3 col-md-3 col-sm-3 second-row">
+                <div class="tick-border">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    width="32"
+                  >
+                    <path
+                      d="m13.788 25.588c.04.032.064.076.106.106.06.04.128.048.192.076.076.036.15.07.23.092.078.02.154.03.234.036.114.012.224.012.336-.004.046-.008.09-.02.136-.032.138-.034.266-.088.392-.164.022-.014.04-.03.062-.044.082-.056.17-.098.24-.174.05-.054.072-.124.112-.184.002-.002.006-.004.006-.006l11.918-19.102c.424-.646.242-1.514-.406-1.938s-1.514-.242-1.938.406l-11.008 17.642-6.088-5.922c-.568-.526-1.452-.492-1.978.076-.524.568-.49 1.454.078 1.978l7.324 7.126c.014.014.034.018.052.032z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>Quick Turnaround</h1>
+                <p>
+                  We understand the importance of your device, and we strive to
+                  provide fast and efficient service, aiming for quick
+                  turnaround times to minimize your downtime.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="row third-band-box">
+              <div class="col-lg-3 col-md-3 col-sm-3 second-row">
+                <div class="tick-border">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    width="32"
+                  >
+                    <path
+                      d="m13.788 25.588c.04.032.064.076.106.106.06.04.128.048.192.076.076.036.15.07.23.092.078.02.154.03.234.036.114.012.224.012.336-.004.046-.008.09-.02.136-.032.138-.034.266-.088.392-.164.022-.014.04-.03.062-.044.082-.056.17-.098.24-.174.05-.054.072-.124.112-.184.002-.002.006-.004.006-.006l11.918-19.102c.424-.646.242-1.514-.406-1.938s-1.514-.242-1.938.406l-11.008 17.642-6.088-5.922c-.568-.526-1.452-.492-1.978.076-.524.568-.49 1.454.078 1.978l7.324 7.126c.014.014.034.018.052.032z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>Transparent Pricing</h1>
+                <p>
+                  Our pricing is transparent and competitive. You'll receive a
+                  clear and detailed estimate before we begin any repairs, and
+                  there are no hidden fees.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="row third-band-box">
+              <div class="col-lg-3 col-md-3 col-sm-3 second-row">
+                <div class="tick-border">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    width="32"
+                  >
+                    <path
+                      d="m13.788 25.588c.04.032.064.076.106.106.06.04.128.048.192.076.076.036.15.07.23.092.078.02.154.03.234.036.114.012.224.012.336-.004.046-.008.09-.02.136-.032.138-.034.266-.088.392-.164.022-.014.04-.03.062-.044.082-.056.17-.098.24-.174.05-.054.072-.124.112-.184.002-.002.006-.004.006-.006l11.918-19.102c.424-.646.242-1.514-.406-1.938s-1.514-.242-1.938.406l-11.008 17.642-6.088-5.922c-.568-.526-1.452-.492-1.978.076-.524.568-.49 1.454.078 1.978l7.324 7.126c.014.014.034.018.052.032z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>Quality Parts</h1>
+                <p>
+                  We use only high-quality, genuine parts for repairs, ensuring
+                  the longevity and optimal performance of your device after the
+                  service.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="row third-band-box">
+              <div class="col-lg-3 col-md-3 col-sm-3 second-row">
+                <div class="tick-border">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    width="32"
+                  >
+                    <path
+                      d="m13.788 25.588c.04.032.064.076.106.106.06.04.128.048.192.076.076.036.15.07.23.092.078.02.154.03.234.036.114.012.224.012.336-.004.046-.008.09-.02.136-.032.138-.034.266-.088.392-.164.022-.014.04-.03.062-.044.082-.056.17-.098.24-.174.05-.054.072-.124.112-.184.002-.002.006-.004.006-.006l11.918-19.102c.424-.646.242-1.514-.406-1.938s-1.514-.242-1.938.406l-11.008 17.642-6.088-5.922c-.568-.526-1.452-.492-1.978.076-.524.568-.49 1.454.078 1.978l7.324 7.126c.014.014.034.018.052.032z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>Wide Range of Repairs</h1>
+                <p>
+                  From cracked screens and battery replacements to complex
+                  motherboard issues, we offer a comprehensive range of repair
+                  services for various devices.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="row third-band-box">
+              <div class="col-lg-3 col-md-3 col-sm-3 second-row">
+                <div class="tick-border">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    width="32"
+                  >
+                    <path
+                      d="m13.788 25.588c.04.032.064.076.106.106.06.04.128.048.192.076.076.036.15.07.23.092.078.02.154.03.234.036.114.012.224.012.336-.004.046-.008.09-.02.136-.032.138-.034.266-.088.392-.164.022-.014.04-.03.062-.044.082-.056.17-.098.24-.174.05-.054.072-.124.112-.184.002-.002.006-.004.006-.006l11.918-19.102c.424-.646.242-1.514-.406-1.938s-1.514-.242-1.938.406l-11.008 17.642-6.088-5.922c-.568-.526-1.452-.492-1.978.076-.524.568-.49 1.454.078 1.978l7.324 7.126c.014.014.034.018.052.032z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>Satisfaction Guarantee</h1>
+                <p>
+                  Your satisfaction is our priority. We stand behind our work
+                  and offer a customer satisfaction guarantee to ensure you're
+                  happy with the results.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="last-band" id="last-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-12">
+            <h1>Get In Touch</h1>
+            <form onsubmit="return SendMail(event)">
+              <label for="fullName"
+                >Full Name <span style="color: red">*</span></label
+              >
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Enter Full Name"
+                name="fullname"
+                required
+              />
+
+              <label for="email_id"
+                >Email Id <span style="color: red">*</span></label
+              >
+              <input
+                type="email"
+                id="email_id"
+                placeholder="Enter Email ID"
+                name="email"
+                required
+              />
+
+              <label for="message"
+                >Enter Your Message <span style="color: red">*</span></label
+              >
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Enter your message"
+                required
+              ></textarea>
+
+              <button type="submit" id="sendButton">Send Message</button>
+            </form>
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="box">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <h1>Visit Our Workshop</h1>
+                  <p>100 S Main St, New York, NY 11201</p>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="box" style="margin-bottom: 0">
+                  <i class="fas fa-clock"></i>
+                  <h1>We're Open Today</h1>
+                  <p>Mon - Sat: 8AM - 9PM</p>
+                  <p>Sunday closed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-content">
+        <h1>Copyright 2025 - Mr Repairr by Smart Solution Services</h1>
+      </div>
+    </footer>
+
+    <!-- Include SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      function SendMail(event) {
+        event.preventDefault(); // Prevents form submission
+
+        var sendButton = document.getElementById("sendButton");
+        sendButton.innerText = "Sending...";
+        sendButton.disabled = true; // Disable button while sending
+
+        var params = {
+          from_name: document.getElementById("fullName").value,
+          from_email: document.getElementById("email_id").value,
+          message: document.getElementById("message").value,
+        };
+
+        if (!params.from_name || !params.from_email || !params.message) {
+          Swal.fire({
+            icon: "warning",
+            title: "Missing Fields",
+            text: "Please fill in all fields before sending.",
+          });
+          sendButton.innerText = "Send Message"; // Restore button
+          sendButton.disabled = false;
+          return false;
+        }
+
+        emailjs
+          .send("service_9fwcrlb", "template_959b86d", params)
+          .then(function (res) {
+            Swal.fire({
+              title: "Message Sent!",
+              text: "Your message has been successfully sent.",
+              icon: "success",
+            });
+            document.querySelector("form").reset(); // Clear form after success
+          })
+          .catch(function (err) {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong! Please try again later.",
+            });
+            console.error("Email sending error:", err);
+          })
+          .finally(() => {
+            sendButton.innerText = "Send Message"; // Restore button text
+            sendButton.disabled = false; // Re-enable button
+          });
+
+        return false; // Prevent default form submission behavior
+      }
+    </script>
+    <script>
+      function goToLastSection() {
+        document.getElementById("last-section").scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
+</html>
